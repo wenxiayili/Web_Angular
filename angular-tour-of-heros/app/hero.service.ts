@@ -9,8 +9,17 @@ import{HEROES} from './mock-heroes'
 @Injectable()
 
 export class HeroService{
+
+    //得到英雄列表
     getHeroes():Promise<Hero[]>{
         return Promise.resolve(HEROES);
     } //stub
 
+    //得到一个英雄的
+    getHero(id:number):Promise<Hero>{
+        return this.getHeroes()
+                .then(heroes=>heroes.find(hero=>hero.id===id));
+    }
+
+   
 }

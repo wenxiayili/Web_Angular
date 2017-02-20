@@ -14,9 +14,15 @@ var mock_heroes_1 = require("./mock-heroes");
 var HeroService = (function () {
     function HeroService() {
     }
+    //得到英雄列表
     HeroService.prototype.getHeroes = function () {
         return Promise.resolve(mock_heroes_1.HEROES);
     }; //stub
+    //得到一个英雄的
+    HeroService.prototype.getHero = function (id) {
+        return this.getHeroes()
+            .then(function (heroes) { return heroes.find(function (hero) { return hero.id === id; }); });
+    };
     return HeroService;
 }());
 HeroService = __decorate([
