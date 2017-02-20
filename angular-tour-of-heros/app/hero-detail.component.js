@@ -27,7 +27,7 @@ var HeroDetailComponent = (function () {
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
         //Add 'implements OnInit' to the class.
         this.route.params
-            .switchMap(function (params) { return _this.heroService.getHero(+params[id]); })
+            .switchMap(function (params) { return _this.heroService.getHero(+params['id']); })
             .subscribe(function (hero) { return _this.hero = hero; });
     };
     //回到“原路”的实现思路:使用Location服务
@@ -42,8 +42,9 @@ __decorate([
 ], HeroDetailComponent.prototype, "hero", void 0);
 HeroDetailComponent = __decorate([
     core_1.Component({
+        moduleId: module.id,
         selector: 'my-hero-detail',
-        template: "\n          <div *ngIf=\"hero\">\n              <h2>{{hero.name}} details!</h2>\n              <div><label>id:</label>{{hero.id}}</div>\n                <div>\n                  <label>name:</label>\n              \n                  <input [(ngModel)]=\"hero.name\" placeholder=\"name\">\n                </div>\n                <button (click)=\"goBack()\">back</button>\n           </div>\n           \n    \n    "
+        templateUrl: 'hero-detail.component.html',
     }),
     __metadata("design:paramtypes", [hero_service_1.HeroService,
         router_1.ActivatedRoute,

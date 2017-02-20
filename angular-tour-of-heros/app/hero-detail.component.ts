@@ -10,21 +10,9 @@ import{HeroService} from './hero.service' ;
 import 'rxjs/add/operator/switchMap';
 
 @Component({
+    moduleId:module.id,
     selector:'my-hero-detail',
-    template:`
-          <div *ngIf="hero">
-              <h2>{{hero.name}} details!</h2>
-              <div><label>id:</label>{{hero.id}}</div>
-                <div>
-                  <label>name:</label>
-              
-                  <input [(ngModel)]="hero.name" placeholder="name">
-                </div>
-                <button (click)="goBack()">back</button>
-           </div>
-           
-    
-    `
+    templateUrl:'hero-detail.component.html',
 })
 
 //将ActivatedRoute和HeroService服务注入到构造函数中，将它们保存到是有变量:
@@ -39,7 +27,7 @@ export class HeroDetailComponent implements OnInit{
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
         //Add 'implements OnInit' to the class.
         this.route.params
-        .switchMap((params:Params)=>this.heroService.getHero(+params[id]))
+        .switchMap((params:Params)=>this.heroService.getHero(+params['id']))
         .subscribe(hero=>this.hero=hero);
     }
 
