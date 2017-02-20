@@ -6,7 +6,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
@@ -14,6 +13,7 @@ var hero_detail_component_1 = require("./hero-detail.component");
 var heroes_component_1 = require("./heroes.component");
 var hero_service_1 = require("./hero.service");
 var dashboard_component_1 = require("./dashboard.component");
+var app_routing_module_1 = require("./app-routing.module");
 /*这个Routes是一个路由定义的数组。此时只有一个路由定义
   路由定义主要包括以下的部分：
   path:路由器会用它来匹配浏览器地址栏中的地址，如heroes.
@@ -29,29 +29,7 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
-            router_1.RouterModule.forRoot([
-                {
-                    path: '',
-                    redirectTo: '/dashboard',
-                    pathMatch: 'full'
-                },
-                {
-                    path: 'heroes',
-                    component: heroes_component_1.HeroesComponent
-                },
-                {
-                    path: 'dashboard',
-                    component: dashboard_component_1.DashboardComponent
-                },
-                {
-                    path: 'detail/:id',
-                    component: hero_detail_component_1.HeroDetailComponent
-                },
-                {
-                    path: 'detail:/id',
-                    component: hero_detail_component_1.HeroDetailComponent
-                }
-            ])
+            app_routing_module_1.AppRoutingModule
         ],
         declarations: [
             app_component_1.AppComponent,

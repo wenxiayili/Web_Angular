@@ -1,0 +1,21 @@
+<h2>My Heroes</h2>
+
+<!--借助Angular来实现将组件中的Heroes绑定到模板中，迭代并逐个显示它们-->
+<ul class="heroes">
+    <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+        <!--ngFor是Angular的内置指令 *是其重要部分-->
+        <!--each hero goes here-->
+        <span class="badge">{{hero.id}}</span>{{hero.name}}
+    </li>
+</ul>
+
+<!--将AppComponent组件的selectedHero属性和HeroDetailComponent组件hero属性绑定在一起，这样AppComponent就额可以和HeroDetailComponent协同工作。-->
+<!--<my-hero-detail [hero]="selectedHero"></my-hero-detail>-->
+<div *ngIf="selectedHero">
+    <h2>
+        {{selectedHero.name|uppercase}} is my hero
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+</div>
+<!--//第一行是单项数据绑定的“插值表达式” 形式,这种单项绑定的方式。当input中的name发生变化时，是无法将
+<h2>中的name发生改变的。-->
